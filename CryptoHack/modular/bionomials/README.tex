@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{CryptoHack}
+\author{Appaji Chintimi}
+\date{October 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+First things first, By Symmetry, We can interchange the $c_1$ and $(2^p + 3^q)$.
+
+In the expansion of $(x + y)^n$, We can ignore all terms except first and last. Because all the terms except first and last contain the product of $x$ and $y$, and Since $N = p * q$, their contribution to modulo $N$ is $0$. Combining all properties, we get following equations.
+
+\begin{equation}
+    ((2p)^{e_1} + (3q)^{e_1})  \equiv c_1 mod N
+\end{equation}
+\begin{equation}
+    ((5p)^{e_2} + (7q)^{e_2})  \equiv c_2 mod N
+\end{equation}
+
+By compatibility with exponentiation, And using above property again (Ignoring middle terms), we get,
+\begin{equation}
+    ((2p)^{e_1e_2} + (3q)^{e_1e_2})  \equiv c_1^{e_2} mod N
+\end{equation}
+\begin{equation}
+    ((5p)^{e_1e_2} + (7q)^{e_1e_2})  \equiv c_2^{e_1} mod N
+\end{equation}
+
+Let's define few variables for convenience. $a = 2^{e_1e_2}$, $b = 3^{e_1e_2}$, $x = c1^{e_2}$, $c = 5^{e_1e_2}$, $d = 7^{e_1e_2}$, $y = c_2^{e_1}$. Note that,
+
+\begin{equation*}
+    x = (ap^{e_1e_2} + bq^{e_1e_2}) mod N
+\end{equation*}
+\begin{equation*}
+    y = (cp^{e_1e_2} + dq^{e_1e_2}) mod N
+\end{equation*}
+
+\begin{equation*}
+    p = gcd(dx - by, N)
+\end{equation*}
+\begin{equation*}
+    q = gcd(ay - cx, M)
+\end{equation*}
+
+
+\end{document}
